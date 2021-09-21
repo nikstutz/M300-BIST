@@ -1,26 +1,12 @@
 # Installation der benötigten Tools
 
-Wir haben uns dazu entschieden, das Modul in der TBZ-Cloud umzusetzen. Deshalb haben wir Vagrant und VirtualBox nicht installiert.
+Um Das Modul ordnungsgemäss durchführen zu können, müssen verschiedene Tools vorab installiert werden.
+Visual Studio Code und GIT hatte ich bereits auf meinem Geräten installiert und eingerichtet.
 
-Hierfür müssen wir jedoch WireGuard installieren und einrichten.
-
-## Wireguard (K1)
-
-Wireguard kann auf MacOS direkt aus den AppStore installiert werden.
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2010.13.22.png" alt="WireGuard AppStore Page" width="600px">
-
-Für Windows kann man WireGuard auch von ihrer [Homepage](https://www.wireguard.com/) herunterladen.
- 
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2010.51.48.png" alt="WireGuard Download Page" width="600px">
-
-WireGuard ist für praktisch alle Betriebssysteme verfügbar und deshalb sehr beliebt.
 
 ## VSCode (K1)
 
-[VisualStudio Code](https://code.visualstudio.com/) und git hatten wir ebenfalls schon auf unseren Geräten installiert und eingerichtet.
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2011.15.18.png" alt="VSCode download Page" width="600px">
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto1.png" alt="VSCode download Page" width="600px">
 
 VSCode ist eine OPen-Source IDE (Integrated development environment) welche viele Extensions und eine grosse Community bietet. VSCode ist für folgende Betriebssysteme verfügbar:
 
@@ -28,13 +14,31 @@ VSCode ist eine OPen-Source IDE (Integrated development environment) welche viel
 * Linux 
 * Windows
 
+[hier heruterladen](https://code.visualstudio.com/download)
+
+
 ## Git-CLI (K1)
 
 Das Git-CLI ist ein Command line Tool um mit der Versionsverwaltungsoftware Git arbeiten zu können. Auf den meisten Betriebssystemen muss Git noch isntalliert werden, jedoch ist git auf manchen Linux-distributionen bereits vorhanden.
 
 Git ist für praktisch jedes Betriebssystem verfügbar, [hier heruterladen](https://git-scm.com/downloads).
 
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2011.28.25.png" alt="VSCode download Page" width="600px">
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto2.png" alt="VSCode download Page" width="600px">
+
+## VirtualBox (K1)
+
+Die Freeware VirtualBox ermöglicht es eine virtuelle Maschine auf dem PC zu installieren, in der andere Betriebssysteme wie zum Beispiel Linux oder Windows 10 auf dem PC gefahrlos installiert und getestet werden können.
+
+Virtualbox ist für praktisch jedes Betriebssystem verfügbar, [hier heruterladen](https://www.virtualbox.org/wiki/Downloads).
+
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto4.png" alt="VSCode download Page" width="600px">
+
+## Vagrant (K1)
+Vagrant ist eine Ruby-Anwendung zum Erstellen und Verwalten virtueller Maschinen welche einfache Softwareverteilung ermöglicht. Vagrant ist die Schnittstelle zwischen Virtualisierungssoftware wie in unserem Fall Virtualbox.
+
+Vagrant ist für praktisch jedes Betriebssystem verfügbar, [hier heruterladen](https://www.vagrantup.com/downloads).
+
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto3.png" alt="VSCode download Page" width="600px">
 
 
 
