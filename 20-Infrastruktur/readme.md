@@ -13,7 +13,7 @@ Danach habe ich die Repository erstellt.
 
 Das GIT-CLI ist für das heruterladen von Projekten auf server unabdingbar, da man so einfach und sicher ganze Projekte auf einen Server bekommt ohne das man einen Client dazwischen schalten muss. ebenfalls beitet das CLI eine gute basis für automation, somit kann auch wenn eine neue Instanz erstellt wird direkt die aktuellste Version aus der repository pullen, auch wenn dies in den meisten Fällen nicht erwünschenswert ist.
 
-<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto65.png" alt="Git-CLI in use" width="400px">
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfot65.png" alt="Git-CLI in use" width="400px">
 
 # Vorhandene Vagrant Instanz (K2)
 
