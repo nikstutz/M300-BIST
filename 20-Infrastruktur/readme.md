@@ -2,25 +2,24 @@
 
 # GitHub (K2)
 
-Wir hatten alle schon GitHub-Accounts erstellt. Deshalb mussten wir diese nicht mehr erstellen.
+Ich hatten bereit ein GitHub-Accounts erstellt. Deshalb musste ich diesen nicht mehr erstellen.
 
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2010.06.45.png" alt="GitHub Profile" width="200px">
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto5.png" alt="GitHub Profile" width="200px">
 
-Danach haben wir alle in die Repo eingeladen.
+Danach habe ich die Repository erstellt.
 
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2011.38.53.png" alt="GitHub Collaborators" width="600px">
 
 # Benutzen des Git-CLI (K2)
 
-Das git-cli ist für das heruterladen von projekten auf server unabdingbar, da man so einfach und sicher ganze Projekte auf einen Server bekommt ohne das man einen Client dazwischen schalten muss. ebenfalls beitet das CLI eine gute basis für automation, somit kann auch wenn eine neue Instanz erstellt wird direkt die aktuellste Version aus der repo pullen, auch wenn dies in den meisten Fällen nicht erwünschenswert ist.
+Das GIT-CLI ist für das heruterladen von Projekten auf server unabdingbar, da man so einfach und sicher ganze Projekte auf einen Server bekommt ohne das man einen Client dazwischen schalten muss. ebenfalls beitet das CLI eine gute basis für automation, somit kann auch wenn eine neue Instanz erstellt wird direkt die aktuellste Version aus der repository pullen, auch wenn dies in den meisten Fällen nicht erwünschenswert ist.
 
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2011.44.38.png" alt="Git-CLI in use" width="400px">
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto65.png" alt="Git-CLI in use" width="400px">
 
 # Vorhandene Vagrant Instanz (K2)
 
 Um zu testen ob Virtualbox und Vagrant richtig installiert wurden, haben wir auf dem TBZ Cloud Server ein Vagrantfile heruntergeladen das zum Testen dient. Dieses ist im Verzeichnis ```~/VMs/VagrantTestVm``` des users ```ubuntu``` zu finden.
 
-[In dem File](https://github.com/SayHeyD/M300-BIST/blob/master/vagrant-files/vagrant-test/Vagrantfile) steht folgendes (ohne Kommentare):
+[In dem File](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/Test-Vagrant/VAGRANT) steht folgendes (ohne Kommentare):
 
 ```
 Vagrant.configure("2") do |config|
@@ -43,17 +42,17 @@ Installierte Programme:
 * [lynx](https://lynx.browser.org/) | Command-Line Internet Browser
 * [apache2](https://httpd.apache.org/) | Web-Server
 
-Nachdem das File in einem eigenen Ordner angelegt wurde können wir nach der Installation von Vagrant das Stup testen, in dem wir das erstellen der VM mit ```vagrant up --provider=virtualbox``` starten.
+Nachdem das File in einem eigenen Ordner angelegt wurde kann ich nach der Installation von Vagrant das Stup testen, in dem ich das erstellen der VM mit ```vagrant up --provider=virtualbox``` starte.
 
-Sobald der Befehl fertig ist können wir mit ```vagrant ssh``` auf die VM zugreifen.
+Sobald der Befehl fertig ist kann ich mit ```vagrant ssh``` auf die VM zugreifen.
 
-Um zu testen ob der Web-Server richtig funktioniert, rufen wir mit ```lynx 127.0.0.1``` die lokale Website auf. Nun sollten wir in Textform die Standard-Website von Apache2 sehen. Falls wir hier eine Fehlermeldung bekommen, können wir mit ```sudo service apache2 status``` überprüfen ob der Webserver läuft. Bei weiteren Problemen würde man dann auf die Logs zugreifen.
+Um zu testen ob der Web-Server richtig funktioniert, rufe ich mit ```lynx 127.0.0.1``` die lokale Website auf. Nun sollte ich in Textform die Standard-Website von Apache2 sehen. Falls ich hier eine Fehlermeldung bekomme, kann ich mit ```sudo service apache2 status``` überprüfen ob der Webserver läuft. Bei weiteren Problemen würde man dann auf die Logs zugreifen.
 
 # Eigene Vagrant Services (K2)
 
 ## Nginx VM (K4)
 
-Vagrant ist ein Tool zur Automtisierung für das Aufsetzen von VMs. So kann man zum Beispiel eine VM aufsetzen, auf der direkt Nginx / apache oder andere services installiert werden. Ein [Vagrantfile](https://github.com/SayHeyD/M300-BIST/blob/master/vagrant-files/nginx-reverse-proxy/Vagrantfile) sieht in etwa so aus:
+Vagrant ist ein Tool zur Automtisierung für das Aufsetzen von VMs. So kann man zum Beispiel eine VM aufsetzen, auf der direkt Nginx / apache oder andere services installiert werden. Ein [Vagrantfile](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/Reverse%20Proxy/Vagrantfile) sieht in etwa so aus:
 
 ```
 Vagrant.configure("2") do |config|
@@ -105,8 +104,8 @@ server {
 
 ## Apache VM (K3)
 
-Um den Reverse-Proxy richtig testen zu können haben wir noch einen Apache2 Server in einer anderen VM aufgesetzt.
-Das [Vagrantfile](https://github.com/SayHeyD/M300-BIST/blob/master/vagrant-files/apache2-web/Vagrantfile) sieht folgendermassen aus (ohne Kommentare):
+Um den Reverse-Proxy richtig testen zu können habe ich noch einen Apache2 Server in einer anderen VM aufgesetzt.
+Das [Vagrantfile](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/WebHost/Vagrantfile) sieht folgendermassen aus (ohne Kommentare):
 
 ```
 Vagrant.configure("2") do |config|
@@ -148,49 +147,11 @@ Hier sind die Testfälle zum überprüfen der Funktionalität des Internen Netzw
 
 Mit diesem Test soll überprüft werden ob der Reverse-Proxy korrekt eingerichtet ist und man wie darauf vorgesehen auch darauf zugreifen kann.
 
-Hierzu verbindet man sich zuerst per Wireguard.
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-09-02%20um%2009.44.44.png" alt="WireGuard Menu" width="200px">
-
-Danach kann man im Browser über die IP des Servers un den Port 8080 auf den Server zugreifen.
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-09-02%20um%2009.47.09.png" alt="WebContent" width="600px">
+Im Browser kann man über die IP des Servers un den Port 8080 auf den Server zugreifen.
 
 Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Nginx Proxy auf den Reverse-Proxy verbunden.
 
-### Unerlaubter Direkter Zugriff auf VM
 
-| Erwartets Ergebnis | Eingetroffenes Ergebnis |
-| ------------------ | ----------------------- |
-| Timeout | Timeout |
-
-Um zu testen ob man über den VM-Host (TBZ Cloud-Server) direkt auf den WEbserver zugreifen kann isntallieren wir das Programm [lynx](https://lynx.browser.org/). Lynx ist ein CLI Webbrowser für linux. Wenn wir per SSH auf den TBZ Cloud-Server verbunden sind können wir lynx installieren.
-
-```sudo apt install -y lynx```
-
-Nach der Installation von lynx könen wir versuchen auf die Website der VM zuzugrifen.
-
-Der Command um sich mit der Website zu verbinden: ```lynx 192.168.90.3```
-
-Nachdem wir den Befehl eingegeben haben können wir mit Enter bestätigen und danach sollten wir folgendes in der Konsole sehen.
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-09-02%20um%2010.38.10.png" alt="GitHub Collaborators" width="600px">
-
-Daher Lynx keine Fehlermeldung für Timeouts ausgibt, nehmen wir nach 15 sekunden in dieser Ansicht an, dass die Website nicht direkt erreichbar ist.
-
-## Host-Only Netzwerk
-
-| Bezeichnung | Daten |
-|-------------|-------|
-| Netz-ID | 192.168.90.0 |
-| Subnet | 255.255.255.0 |
-| Nginx | 192.168.90.2 |
-| Apache | 192.168.90.3 |
-
-In dem Netzwerk ist DHCP deaktiviert und die Adressen sind statisch vergeben.
-
-## Netzwerkplan
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/netzwerkplan.png" alt="Netzwerkplan">
 
 ### Vagrant Befehle (K3)
 | Vagrant Befehl| Funktionsbeschreibung |
@@ -208,20 +169,16 @@ In dem Netzwerk ist DHCP deaktiviert und die Adressen sind statisch vergeben.
 
 ## Apache Web-Server mit ngrok (K4)
 
-1. Wir befinden uns via ssh auf dem TBZ Cloud Server "10.1.31.20" und navigieren in folgendes Verzeichnis:
-```
-/etc/apache2/sites-available
-```
-> Wichtig ist, dass Apache Web-Server bereits konfiguriert ist. Anleitung [Apache Web-Server](https://github.com/SayHeyD/M300-BIST/tree/master/20-Infrastruktur#apache-vm-k3)
+> Wichtig ist, dass Apache Web-Server bereits konfiguriert ist.
 
-2. Entsprechende Datei bearbeiten:
+1. Entsprechende Datei bearbeiten:
 ```
 sudo vi 000-default.conf
 ```
 
-3. "VirtualHost" von "80" zu "8080" wechseln und speichern.
+2. "VirtualHost" von "80" zu "8080" wechseln und speichern.
 
-4. Mit folgendem Befehl wird ein direkter Tunnel durch die Firwall geöffnet. 
+3. Mit folgendem Befehl wird ein direkter Tunnel durch die Firwall geöffnet. 
 ```
 ngrok http 80
 ```
@@ -230,17 +187,17 @@ ngrok http 80
 
 Um zu verhindern, dass jeder mit SSH verbinden können, geben wir den Zugriff für bestimmte IP's frei
 
-5. Wir erlauben auf der Firewall gewissen IP's den Zugriff via SSH:
+4. Wir erlauben auf der Firewall gewissen IP's den Zugriff via SSH:
 ```
 sudo ufw allow from 10.1.31.50 to any port 22
 ```
 
-6. Firewall Regel aktivieren:
+5. Firewall Regel aktivieren:
 ```
  sudo ufw enable
 ```
 
-7. Status überprüfen
+6. Status überprüfen
 ```
  sudo ufw status
 ```
@@ -248,15 +205,11 @@ sudo ufw allow from 10.1.31.50 to any port 22
 
 ## Markdown editor (K2)
 
-Wir haben uns beim Markdown editor für Visual Studio Code und die GitHub Weboberfläche entschieden.
+Ich habe mich beim editor für Visual Studio Code und die GitHub Weboberfläche entschieden.
 
-VSCode benutzen wir da es eine Vielzahl an Erweiterungen gibt, welche uns auch ermöglichen im gelichen Editor z.B. Vagrant & Docker-Files zu bearbeiten.
+VSCode benutzen ich da es eine Vielzahl an Erweiterungen gibt, welche mir auch ermöglichen im gleichen Editor z.B. Vagrant & Docker-Files zu bearbeiten.
 
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2018.09.04.png" alt="VSCode split window" width="600px">
-
-Die Weboberfläche von GitHub wird auch zum schreiben der Markdown dokumentationen oder kurzen änderungen in allen Dateien verwendet, da dort dann auch alles direkt auf der remote origin repo verfügbar ist.
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-08-19%20um%2018.17.36.png" alt="GitHub Editor" width="600px">
+Die Weboberfläche von GitHub wird auch zum schreiben der Markdown dokumentationen oder kurzen änderungen in allen Dateien verwendet, da dort dann auch alles direkt auf der remote ursprungs Repository verfügbar ist.
 
 # SSH-Keys (K4)
 
@@ -273,8 +226,6 @@ Um einen SSH-Key auf MacOS oder Linux zu generieren, benötigt man das ssh-keyge
 Mit folgendem Befehl startet man die generation eines SSH-Keypairs. Die Keygen-routine fragt nach allen erforderlichen angaben, wie zum Beispiel Speicherort und Passwort. Wenn man den SSH-Key nicht für automatisierung verwendet wird stark empfohlen ein Passwort einzurichten.
 
 ```ssh-keygen -t rsa```
-
-<img src="https://github.com/SayHeyD/M300-BIST/blob/master/images/Bildschirmfoto%202020-09-02%20um%2008.31.29.png" alt="SSH-Keygen generation" width="600px">
 
 ### Windows
 
