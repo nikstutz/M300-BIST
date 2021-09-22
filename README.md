@@ -11,7 +11,7 @@ Hier ist die Dokumentation für das Modul 300 abgelegt. Alle Aufgaben werden in 
   * [35 - Sicherheit](https://github.com/nikstutz/M300-BIST/tree/master/35-Sicherheit)
 * [40 - Kubernetes](https://github.com/nikstutz/M300-BIST/tree/master/40-Kubernetes)
 
-## Persönlicher Wissenstand (K2/k4)
+## Persönlicher Wissenstand (K2/K4)
 
 Ich hatte in meinem Basislehrjahr ein grosses Projekt mit Linux und habe deshalb seitdem vermehrt den Kontakt mit Linux (vorallem Ubuntu), mit Git & GitHub kenne ich mich aber nicht sehr gut aus. 
 
