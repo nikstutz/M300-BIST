@@ -2,7 +2,7 @@
 
 # GitHub (K2)
 
-Ich hatten bereit ein GitHub-Accounts erstellt. Deshalb musste ich diesen nicht mehr erstellen.
+Ich hatte bereit einen GitHub-Accounts erstellt. Deshalb musste ich diesen nicht mehr erstellen.
 
 <img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto5.png" alt="GitHub Profile" width="200px">
 
@@ -50,7 +50,7 @@ Um zu testen ob der Web-Server richtig funktioniert, rufe ich mit ```lynx 127.0.
 
 # Eigene Vagrant Services (K2)
 
-## Nginx VM (K4)
+## Proxy VM (K4)
 
 Vagrant ist ein Tool zur Automtisierung für das Aufsetzen von VMs. So kann man zum Beispiel eine VM aufsetzen, auf der direkt Nginx / apache oder andere services installiert werden. Ein [Vagrantfile](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/Reverse%20Proxy/Vagrantfile) sieht in etwa so aus:
 
@@ -60,19 +60,20 @@ Vagrant.configure("2") do |config|
 
     config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "0.0.0.0"
 
-    config.vm.network "private_network", ip: "192.168.90.2"
+    config.vm.network "private_network", ip: "192.168.150.3"
 
     config.vm.synced_folder "./nginx-config", "/etc/nginx"
 
     config.vm.provider "virtualbox" do |vb|
-        vb.memory = "512"
+        vb.memory = "1024"
     end
 
     config.vm.provision "shell", inline: <<-SHELL
         apt-get update
-        apt-get install -y nginx
-        service nginx restart
-        ufw allow from 10.0.2.2 to any port 22
+        sudo a2enmod proxy
+	sudo a2enmod proxy_html
+	sudo a2enmod proxy_http
+        ufw allow 22
         ufw allow 80
         ufw enable
     SHELL
@@ -83,23 +84,16 @@ Dieses File setzt einen [Nginx](https://www.nginx.com/) Reverse-Proxy auf und ve
 
 Auf dem Server ```10.1.31.7``` sind nun ein Nginx Reverse-Proxy und ein Apache Server installiert. Der Host-Port 8080 wird auf Port 80 des Reverse-Proxies weitergeleitet. Ansonsten sind die Nginx und Apache VMs in ihrem eigenen virtuellen Netzwerk.
 
-### Nginx konfiguration
+### Proxy konfiguration
 
-Hier ist die Konfiguration des Nginx Servers:
+Hier ist die Konfiguration des Proxy Servers:
 
 ```
-server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-
-	location / {
-		proxy_pass http://192.168.90.3/$uri;
-		proxy_set_header Host $host;
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header X-Forwarded-Proto $scheme;
-	}
-}
+	echo "echo '<VirtualHost *:80>' >> /etc/apache2/sites-available/#{proxy_conf}" | sudo bash
+	echo "echo '	ServerName m300-mysql' >> /etc/apache2/sites-available/#{proxy_conf}" | sudo bash
+	echo "echo '	ServerAlias www.m300-mysql '>> /etc/apache2/sites-available/#{proxy_conf}" | sudo bash
+	echo "echo '</VirtualHost>' >> /etc/apache2/sites-available/#{proxy_conf}" | sudo bash
+	sudo a2ensite /etc/apache2/sites-available/#{proxy_conf}
 ```
 
 ## Apache VM (K3)
@@ -108,29 +102,24 @@ Um den Reverse-Proxy richtig testen zu können habe ich noch einen Apache2 Serve
 Das [Vagrantfile](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/WebHost/Vagrantfile) sieht folgendermassen aus (ohne Kommentare):
 
 ```
-Vagrant.configure("2") do |config|
+config.vm.define "webserver" do |web|
+	web.vm.box = "ubuntu/xenial64"
+	web.vm.provider "virtualbox" do |vb|
+	vb.memory = "512"  
 
-    config.vm.box = "ubuntu/bionic64"
-  
-    config.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
-  
-    config.vm.network "private_network", ip: "192.168.90.3"
-  
-    config.vm.synced_folder "./web-root", "/var/www"
-    config.vm.synced_folder "./apache2-config", "/etc/apache2"
-  
-    config.vm.provider "virtualbox" do |vb|
-       vb.memory = "512"
-    end
+	web.vm.hostname = "webserver01"
+	
+		web.vm.network "private_network", ip:"192.168.10.150" 
+		web.vm.network "forwarded_port", guest:70, host:7070, auto_correct: true  
+	end
 
-    config.vm.provision "shell", inline: <<-SHELL
-        apt-get update
-        apt-get install -y apache2 lynx
-        ufw allow from 10.0.2.2 to any port 22
-        ufw allow from 192.168.90.2 to any port 80
-        ufw enable
-        SHELL
-    end
+		web.vm.synced_folder ".", "/var/www/html"
+		web.vm.provision "shell", inline: <<-SHELL
+		sudo apt-get update
+		sudo apt-get -y install debconf-utils apache2 nmap
+
+		SHELL
+	end
 ```
 
 Hier wird im Host-Only Netzwerk der Apache2 Webserver auf dem Host 192.168.90.3:80 freigegeben, auf welchen nur vom internen Netzwerk zugegriffen werden kann. In diesem internen Netzwerk ist ebenfalls ein Nginx Reverse-proxy, welcher über den Port 8080 exposed ist.
@@ -167,7 +156,7 @@ Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Ng
 |    destroy    | Zerstört eine VM      |
 
 
-## Apache Web-Server mit ngrok (K4)
+## Apache Web-Server mit ngrok (K4) 
 
 > Wichtig ist, dass Apache Web-Server bereits konfiguriert ist.
 
@@ -185,11 +174,9 @@ ngrok http 80
 
 > Falls ngrok noch nicht installiert ist dann: [Ngrok installieren](https://snapcraft.io/install/ngrok/ubuntu)
 
-Um zu verhindern, dass jeder mit SSH verbinden können, geben wir den Zugriff für bestimmte IP's frei
-
-4. Wir erlauben auf der Firewall gewissen IP's den Zugriff via SSH:
+4. Ich erlaube auf der Firewall allen IP's den Zugriff via SSH:
 ```
-sudo ufw allow from 10.1.31.50 to any port 22
+sudo ufw allow 22
 ```
 
 5. Firewall Regel aktivieren:
