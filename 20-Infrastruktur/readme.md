@@ -173,13 +173,13 @@ Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Ng
 
 Im Vagrantfile wurden die Gruppen erstellt:
 
-![Gruppen erstellen](https://github.com/nikstutz/M300-BIST/imgages/gruppen_erstellen.png)
+![Gruppen erstellen](https://github.com/nikstutz/M300-BIST/blob/main/images/gruppen_erstellen.png)
 
 Mit "vagrant ssh reverse-proxyserver" auf die VM zugreiffen.
 
 Mit Befehl "ll" Gruppenordner anzeigen lassen:
 
-![Gruppen anzeigen](https://github.com/nikstutz/M300-BIST/gruppen_anzeigen.png)
+![Gruppen anzeigen](https://github.com/nikstutz/M300-BIST/blob/main/images/gruppen_anzeigen.png)
 
 
 
