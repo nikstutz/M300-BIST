@@ -140,7 +140,8 @@ Im Browser kann man über die IP des Servers un den Port 8080 auf den Server zug
 
 Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Nginx Proxy auf den Reverse-Proxy verbunden.
 
-
+## Netzwerkplan
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Netzwerk.png" alt="Netzwerkplan">
 
 ### Vagrant Befehle (K3)
 | Vagrant Befehl| Funktionsbeschreibung |
