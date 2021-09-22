@@ -80,9 +80,9 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Dieses File setzt einen [Nginx](https://www.nginx.com/) Reverse-Proxy auf und verbindet den lokalen ordner "./nginx-config" mit den ordner "./etc/nginx" auf der VM. Somit kann man die konfiguration von nginx bearbeiten uach wenn die VM schon läuft. Die Konfiguration kann nach veränderung mit ```vagrant reload --provision``` aktualisieren.
+Die Konfiguration kann nach veränderung mit ```vagrant reload --provision``` aktualisieren.
 
-Auf dem Server ```10.1.31.7``` sind nun ein Nginx Reverse-Proxy und ein Apache Server installiert. Der Host-Port 8080 wird auf Port 80 des Reverse-Proxies weitergeleitet. Ansonsten sind die Nginx und Apache VMs in ihrem eigenen virtuellen Netzwerk.
+Auf dem Server ```10.1.31.7``` sind nun ein Reverse-Proxy Server installiert. Der Host-Port 8081 wird auf Port 81 des Reverse-Proxies weitergeleitet.
 
 ### Proxy konfiguration
 
@@ -136,9 +136,21 @@ Hier sind die Testfälle zum überprüfen der Funktionalität des Internen Netzw
 
 Mit diesem Test soll überprüft werden ob der Reverse-Proxy korrekt eingerichtet ist und man wie darauf vorgesehen auch darauf zugreifen kann.
 
-Im Browser kann man über die IP des Servers un den Port 8080 auf den Server zugreifen.
+Im Browser kann man über die IP des Servers und den Port 8081 auf den Server zugreifen.
 
 Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Nginx Proxy auf den Reverse-Proxy verbunden.
+
+ Nr.| Beschreibung                                              | Kontrollie                                                                     | Soll-Situation      | Ist-Situation       | Bestanden? |
+|:-:|-                                                          |-                                                                               |-                    |-                    |:-:         |
+| 1 | `web` sollte anpingbar sein                               | ping 192.168.100.2                                                             | ping funktioniert   | ping funktioniert   | Y          |
+| 2 | `web` sollte mit ssh darauf zugegriffen werden            | vagrant ssh webserver                                                          | Zugriff erfolgreich | Zugriff erfolgreich | Y          |
+| 3 | `web` Apache Server funktioniert? via IP Zugriff          | http://192.168.100.3                                                           | Zugriff erfolgreich | Zugriff erfolgreich | Y          |
+| 4 | `fw` Firewall regeln sind aktiv                           | "sudo ufw status "                                                             | korrekt Anzeigen    | Regeln richtig      | Y          |
+| 5 | `prx` Zugriff SSH                                         | vagrant ssh reverse-proxserver                                                 | Zugriff erfolgreich | Zugriff erfolgreich | Y          |
+| 6 | `prx` sollte anpingbar sein                               | ping 192.168.100.2                                                             | ping erfolgreich    | ping erfolgreich    | Y          |
+| 7 | `prx` Die Gruppenordner wurden erstellt                   | "ll"                                                                           | Gruppen erstellt    | Gruppen erstellt    | Y          |
+| 8 | `prx` MySQL funktioniert                                  |  sudo service mysql status                                                     | service läuft       | Service läuft       | Y          |
+
 
 ## Netzwerkplan
 <img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Netzwerk.png" alt="Netzwerkplan">
