@@ -50,6 +50,8 @@ Um zu testen ob der Web-Server richtig funktioniert, rufe ich mit ```lynx 127.0.
 
 # Eigene Vagrant Services (K2)
 
+
+
 ## Proxy VM (K4)
 
 Vagrant ist ein Tool zur Automtisierung für das Aufsetzen von VMs. So kann man zum Beispiel eine VM aufsetzen, auf der direkt Nginx / apache oder andere services installiert werden. Ein [Vagrantfile](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/Reverse%20Proxy/Vagrantfile) sieht in etwa so aus:
@@ -153,7 +155,7 @@ Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Ng
 
 
 ## Netzwerkplan
-<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Netzwerk.png" alt="Netzwerkplan">
+<img src="https://github.com/nikstutz/M300-BIST/blob/main/images/netzwerkplan.png" alt="Netzwerkplan">
 
 ### Vagrant Befehle (K3)
 | Vagrant Befehl| Funktionsbeschreibung |
