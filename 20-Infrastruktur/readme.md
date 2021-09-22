@@ -17,7 +17,7 @@ Das GIT-CLI ist für das heruterladen von Projekten auf server unabdingbar, da m
 
 # Vorhandene Vagrant Instanz (K2)
 
-Um zu testen ob Virtualbox und Vagrant richtig installiert wurden, haben wir auf dem TBZ Cloud Server ein Vagrantfile heruntergeladen das zum Testen dient. Dieses ist im Verzeichnis ```~/VMs/VagrantTestVm``` des users ```ubuntu``` zu finden.
+Um zu testen ob Virtualbox und Vagrant richtig installiert wurden, haben ich ein Vagrantfile heruntergeladen das zum Testen dient.
 
 [In dem File](https://github.com/nikstutz/M300-BIST/blob/main/vagrant-files/Test-Vagrant/VAGRANT) steht folgendes (ohne Kommentare):
 
