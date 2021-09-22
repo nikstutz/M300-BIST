@@ -169,6 +169,20 @@ Falls man nun eine Apache2 Default seite sieht, ist man erfolgreich über den Ng
 |    destroy    | Zerstört eine VM      |
 
 
+### Benutzer und Rechtevergabe
+
+Im Vagrantfile wurden die Gruppen erstellt:
+
+![Gruppen erstellen](img/gruppen_erstellen.png)
+
+Mit "vagrant ssh reverse-proxyserver" auf die VM zugreiffen.
+
+Mit Befehl "ll" Gruppenordner anzeigen lassen:
+
+![Gruppen anzeigen](img/gruppen_anzeigen.png)
+
+
+
 ## Apache Web-Server mit ngrok (K4) 
 
 > Wichtig ist, dass Apache Web-Server bereits konfiguriert ist.
