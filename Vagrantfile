@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
 	
 	#IP Vergae und Port forwarding
 		fw.vm.network "private_network", ip:"192.168.100.2" 
-		web.vm.network "forwarded_port", guest:90, host:9090, auto_correct: true 
+		fw.vm.network "forwarded_port", guest:90, host:9090, auto_correct: true 
 	end
 	
 	#Installation Firewall und Port freigabe
@@ -52,7 +52,7 @@ Vagrant.configure(2) do |config|
 	
 		#IP Vergabe und Port forwarding
 		prx.vm.network "private_network", ip:"192.168.100.3"
-		web.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true 
+		prx.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true 
 	end
 		#Installation der Dienste
 		prx.vm.synced_folder ".", "/var/www/html/", create: true
