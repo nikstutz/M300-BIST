@@ -257,13 +257,13 @@ Die erste Zeile zeigt uns das Nginx neugestartet wird.
 Danach kommen 2 Meldungen , welche auch keine Fehlermeldungen ausgeben und somit sind diese auch OK.
 Die nächsten Zeilen, zeigen uns die Aktivität vom apache Server und hier sehen ich das erste mal einen Fehlercode. Den HTTP Fehlercode 404. Dies ist aber nicht weiter schlimm, da dieser nur anzeigt das eine Seite nicht gefunden werden konnte.
 
-## Image Bereitstellung (K6)
+## Image Bereitstellung (K5)
 
 Die einfachste Methode um images bereitzustellen ist Docker Hub. Docker Hub bietet einem die möglichkeit direkt über das docker-cli seine images von einem Server auf den Docker-Hub hochzuladen.
 
 Da Docker-Hub vorher noch nicht bekannt war, habe ich mich der Github Methode gewidmet welche eigentlich auch relativ Simpel ist. Dort erstellt man eine Repository mit den Dockerfiles. Wenn man auf einem Gastsystem nun die Container einbinden möchte, Klont man sich die Repository simpel auf den eigenen Rechner. Von dort aus kann dann mit den dockerfiles gearbeitet werden.
 
-## Persönlicher Wissensstand
+## Persönlicher Wissensstand (K4)
 
 Bisher waren mir "Container" oder "Docker" nicht wirklich ein Begriff. In meiner Arbeitsumgebung hatte ich nur mit gewöhnlichen VM's zu tun, welche mit VMWare Player oder Virtualbox erstellt wurden.
 Die Möglichkeiten und die Vielzahl an Verwendungszewecken, welche mit Containersystemen bewerkstelligt werden können, sind mir bisher nicht bekannt gewesen.
