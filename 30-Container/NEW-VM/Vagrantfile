@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#
+#	Ubuntu Xenial 64-bit Linux mit Docker
+#
+BOX_IMAGE = "ubuntu/focal64"
+
+Vagrant.configure("2") do |config|
+  HOSTNAME = "docker-1"
+  config.vm.define HOSTNAME do |subconfig|
+    subconfig.vm.box = BOX_IMAGE
+    subconfig.vm.network "private_network", ip: "192.168.100.11"
+    #subconfig.vm.network "forwarded_port", guest:80, host:"8011", auto_correct: true
+    subconfig.vm.provider "virtualbox" do |vb|
+      # The VM will be named as ubuntu-{i}
+      #vb.name = HOSTNAME
+      vb.memory = "2048"
+    #end
+    end
+    # Shell Scripts Provision
+    subconfig.vm.provision "shell", path: "scripts/vm-setup.sh"
+    #config.vm.provision "docker" do |d|
+      #d.cmd "./Scripts/Dockerfile"
+      #d.build_image "/vagrant/Dockerfile", args: "-t sngth/nginx"
+      #d.run "sngth/nginx"
+    #end
+    #config.vm.provision "docker" do |docker|
+      #docker.pull_images "ubuntu"
+    #end
+  end
+  # Enable agent forwarding over SSH connections
+  config.ssh.forward_agent = true
+end
