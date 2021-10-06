@@ -149,7 +149,7 @@ apt install phpmyadmin -y
 Die Repository wurde bei erstellung der VM bereits beigefügt. 
 Nun muss nurnoch der Container erstellt und ausgeführt werde.
 
-Zur erstellung des Containers nutzen wir folgenden Code:
+Zur erstellung des Containers nutzte ich folgenden Code:
 docker build -t MySQL:1.0 .
 
 Um das ganze auszuführen kommt folgender Code ins Spiel:
@@ -159,24 +159,24 @@ docker run -p 0.0.0.0:80 -t MySQL:1.0
 
 ### Starten eines Containers
 
-Um einen einfachen Container zu starten können wir einfach den befehl ```docker run -p 0.0.0.0:80:80 -d nginx``` ausführen.
+Um einen einfachen Container zu starten kann ich einfach den befehl ```docker run -p 0.0.0.0:80:80 -d nginx``` ausführen.
 
 Dieser Befehl startet einen nginx container mit standard-konfiguration. Der Port 80 des Containers wird auf den Port 80 des Hosts gebunden und Exposed. Ebenso wird der Container als deamon gestartet.
 
-Nun shen wir uns an welcher Teil des commands was genau macht.
+Nun sehe ich mir an welcher Teil des commands was genau macht.
 
-```docker run``` sagt Docker das wir einen Container starten wollen und jetzt die Optionen für den Start folgen.
+```docker run``` sagt Docker das ich einen Container starten will und jetzt die Optionen für den Start folgen.
 
 ```-p 0.0.0.0:80:80``` sagt Docker das der Host Port ```0.0.0.0:80``` auf den Container Port ```80``` gebunden wird. Das bedeutet das alles was im Container auf den Port 80 läuft auch auf den Host-Port ```0.0.0.0:80``` läuft. Der Syntax für das Port-Binding funktioniert also folgendermassen: ```-p [HostIP mit Port]:[Container Port]```
 
 ```-d``` sagt docker das man den Container als deamon starten will. Das bededutet das der Server als Dienst läuft und das man nach dem Start die Console-Session normal weiter benutzen kann. Wenn man den Container nicht als Deamon startet kann man die Konsole nicht weiterverwenden bis man den Container wieder mit ```Ctrl+C```beendet.
 
-Nun haben wird einen  Docker Container gestartet und können auf die Website über die Host-IP zugreifen.
+Nun habe ich einen  Docker Container gestartet und konnte auf die Website über die Host-IP zugreifen.
 Es gibt natürlich noch viele weitere möglichkeiten einen Container zu starten.
 
 ### Docker Netzwerk
 
-Um uns die verfügbaren Docker Netzwerke anzeigen zu lassen, können wir den Befehl ```docker network ls``` ausführen. Dieser Befehl zeigt uns alle verfügbaren Netzwerke an.
+Um mir die verfügbaren Docker Netzwerke anzeigen zu lassen, können wir den Befehl ```docker network ls``` ausführen. Dieser Befehl zeigt uns alle verfügbaren Netzwerke an.
 
 Docker bietet verschiedene Netzwerktypen an, die man von der virtualisierung her auch kennt. Darunter fallen z.B. Bridged oder Host-Only netzwerke.
 
@@ -221,9 +221,9 @@ Bei laufenden Contaiern können wir sogar in die shell des Containers zugreifen.
 Aufgabe: Verbindung per Web-browser aufbauen.
 Erwartetes Ergebnis: Verbindung zur Website kann aufgebaut werden.
 
-Als erstes veruschen ich auf die [Website](http://192.168.100.11/) (IP der VM) zuzugreifen. Hier wird die Defaultseite erfolgreich geladen. Mit dem Datenbankname angefügt an dem Link, gelangen wir zu unserer Datenbank
+Als erstes veruschen ich auf die [Website](http://192.168.100.11/) (IP der VM) zuzugreifen. Hier wird die Defaultseite erfolgreich geladen. Mit dem Datenbankname angefügt an dem Link, gelang ich zu meiner Datenbank
 
-Mit diesem Test haben wir folgendes getestet:
+Mit diesem Test haben ich folgendes getestet:
 
 * Korrekte Funktion des Reverse-Proxies
 * Korrekte Funktion der Datenbank
@@ -234,10 +234,10 @@ Mit diesem Test haben wir folgendes getestet:
 Aufgabe: Überprüfen der Logs des Web Containers und auf Fehler überprüfen
 Erwartetes Ergebnis: Keine Fehler ausser HTTP Fehlercodes werden in den Logs angezeigt.
 
-Wir verbinden uns mit dem Server und holen uns die ID oder den Namen des Web containers.
-Dies machen wir mit dem Befehl ```docker ps```. Der aktuelle Name des Containers ist apache. Nun können wir uns die Logs mit ```docker logs apache``` anzeigen lassen.
+Ich verbinden mich mit dem Server und hole  die ID oder den Namen des Web containers.
+Dies machen ich mit dem Befehl ```docker ps```. Der aktuelle Name des Containers ist apache. Nun kann ich  die Logs mit ```docker logs apache``` anzeigen lassen.
 
-Die logs des Containers zeigen uns nun folgendes an:
+Die logs des Containers zeigen mir nun folgendes an:
 
 ```
 Restarting nginx: nginx.
@@ -255,7 +255,7 @@ Nothing to migrate.
 
 Die erste Zeile zeigt uns das Nginx neugestartet wird.
 Danach kommen 2 Meldungen , welche auch keine Fehlermeldungen ausgeben und somit sind diese auch OK.
-Die nächsten Zeilen, zeigen uns die Aktivität vom apache Server und hier sehen wir das erste mal einen Fehlercode. Den HTTP Fehlercode 404. Dies ist aber nicht weiter schlimm, da dieser nur anzeigt das eine Seite nicht gefunden werden konnte.
+Die nächsten Zeilen, zeigen uns die Aktivität vom apache Server und hier sehen ich das erste mal einen Fehlercode. Den HTTP Fehlercode 404. Dies ist aber nicht weiter schlimm, da dieser nur anzeigt das eine Seite nicht gefunden werden konnte.
 
 ## Image Bereitstellung (K6)
 
