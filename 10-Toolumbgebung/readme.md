@@ -8,7 +8,7 @@ Visual Studio Code und GIT hatte ich bereits auf meinem Geräten installiert und
 
 <img src="https://github.com/nikstutz/M300-BIST/blob/main/images/Bildschirmfoto1.png" alt="VSCode download Page" width="600px">
 
-VSCode ist eine OPen-Source IDE (Integrated development environment) welche viele Extensions und eine grosse Community bietet. VSCode ist für folgende Betriebssysteme verfügbar:
+VSCode ist eine Open-Source IDE (Integrated development environment) welche viele Extensions und eine grosse Community bietet. VSCode ist für folgende Betriebssysteme verfügbar:
 
 * MacOS
 * Linux 
